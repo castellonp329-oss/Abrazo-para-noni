@@ -1,0 +1,217 @@
+<title>Nuestro abrazo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: una columna centrada. Noche con estrellas, una nube grande donde están los dos abrazados, la frase en letra manuscrita y la dedicatoria debajo. Un solo look nocturno, sin cambio de tema. */
+:root {
+  color-scheme: dark;
+
+  --bg: #0A1428;
+  --sky-top: #060C1E;
+  --sky-bottom: #1C3B68;
+  --fg: #EAF1FB;
+  --muted: #A9BBD6;
+  --gold: #FFD98A;
+  --star: #FFF6DC;
+
+  --cloud: #E6EEFA;
+  --cloud-shade: #BFD0EA;
+  --shadow: rgba(80, 110, 160, 0.38);
+
+  --skin-g: #F2C4A0;
+  --skin-b: #E7B38C;
+  --hair-g: #7A3B2B;
+  --hair-b: #2E2623;
+  --dress: #F2B632;
+  --sweater: #3D6FB6;
+  --shoe: #3A2F2B;
+  --bow: #E0566B;
+  --ink: #3A2A28;
+  --blush: #F08A8A;
+
+  --font-display: "Caveat", "Segoe Script", "Bradley Hand", cursive;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  background-image: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100svh;
+  padding-block: 24px 36px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--star);
+  opacity: 0.85;
+  box-shadow: 0 0 6px 1px rgba(255, 246, 220, 0.55);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  min-height: calc(100svh - 60px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.scene { margin: 0; }
+.scene svg { display: block; width: 100%; height: auto; max-height: 58vh; margin-inline: auto; overflow: visible; }
+
+.float { transform-box: view-box; }
+.pair { transform-box: view-box; transform-origin: 200px 322px; }
+@media (prefers-reduced-motion: no-preference) {
+  .float { animation: float 7s ease-in-out infinite; }
+  .pair { animation: breathe 3.6s ease-in-out infinite; }
+  .star { animation: twinkle var(--dur, 3.5s) ease-in-out var(--delay, 0s) infinite; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+.message { text-align: center; display: flex; flex-direction: column; gap: 8px; padding-inline: 4px; }
+.phrase {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 9vw, 3.1rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.to {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 6vw, 1.9rem);
+  color: var(--gold);
+}
+</style>
+
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<main>
+  <figure class="scene">
+    <svg viewBox="0 0 400 340" role="img" aria-label="Un chico y una chica abrazados sobre una nube, de noche, con los ojos cerrados y sonriendo">
+      <g class="float">
+        <!-- nube: sombra inferior y cuerpo -->
+        <g fill="var(--cloud-shade)" transform="translate(0 10)">
+          <circle cx="104" cy="232" r="64"/>
+          <circle cx="176" cy="176" r="78"/>
+          <circle cx="256" cy="168" r="82"/>
+          <circle cx="312" cy="232" r="66"/>
+          <ellipse cx="208" cy="286" rx="168" ry="44"/>
+        </g>
+        <g fill="var(--cloud)">
+          <circle cx="104" cy="232" r="64"/>
+          <circle cx="176" cy="176" r="78"/>
+          <circle cx="256" cy="168" r="82"/>
+          <circle cx="312" cy="232" r="66"/>
+          <ellipse cx="208" cy="286" rx="168" ry="44"/>
+        </g>
+
+        <ellipse cx="200" cy="326" rx="100" ry="9" fill="var(--shadow)"/>
+
+        <g class="pair">
+          <!-- pelo largo de ella, por detrás -->
+          <g transform="rotate(6 162 150)">
+            <path d="M118 150 Q112 100 162 98 Q214 100 206 150 L212 222 Q188 234 162 228 Q136 234 112 222 Z" fill="var(--hair-g)"/>
+          </g>
+
+          <!-- piernas y zapatos -->
+          <rect x="136" y="304" width="14" height="18" rx="6" fill="var(--skin-g)"/>
+          <rect x="170" y="304" width="14" height="18" rx="6" fill="var(--skin-g)"/>
+          <ellipse cx="143" cy="324" rx="11" ry="6" fill="var(--shoe)"/>
+          <ellipse cx="177" cy="324" rx="11" ry="6" fill="var(--shoe)"/>
+          <rect x="216" y="304" width="14" height="18" rx="6" fill="var(--skin-b)"/>
+          <rect x="250" y="304" width="14" height="18" rx="6" fill="var(--skin-b)"/>
+          <ellipse cx="223" cy="324" rx="11" ry="6" fill="var(--shoe)"/>
+          <ellipse cx="257" cy="324" rx="11" ry="6" fill="var(--shoe)"/>
+
+          <!-- cuerpos -->
+          <path d="M118 312 L128 216 Q160 200 192 216 L202 312 Q160 322 118 312 Z" fill="var(--dress)"/>
+          <path d="M198 312 L206 216 Q240 200 274 216 L282 312 Q240 322 198 312 Z" fill="var(--sweater)"/>
+
+          <!-- cabeza de ella -->
+          <g transform="rotate(6 162 150)">
+            <circle cx="162" cy="150" r="42" fill="var(--skin-g)"/>
+            <path d="M122 146 Q128 102 164 104 Q198 104 202 146 Q184 122 158 126 Q138 128 122 146 Z" fill="var(--hair-g)"/>
+            <path d="M190 110 l-15 -9 v18 z M190 110 l15 -9 v18 z" fill="var(--bow)"/>
+            <circle cx="190" cy="110" r="4" fill="var(--bow)"/>
+            <path d="M146 155 q6 6 12 0 M170 155 q6 6 12 0" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="142" cy="167" rx="7" ry="4" fill="var(--blush)" opacity="0.75"/>
+            <ellipse cx="186" cy="167" rx="7" ry="4" fill="var(--blush)" opacity="0.75"/>
+            <path d="M157 168 q5 5 10 0" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- cabeza de él -->
+          <g transform="rotate(-6 238 146)">
+            <circle cx="238" cy="146" r="42" fill="var(--skin-b)"/>
+            <path d="M196 142 Q192 98 238 98 Q284 98 280 142 Q262 116 238 120 Q212 120 196 142 Z" fill="var(--hair-b)"/>
+            <path d="M226 101 Q230 84 246 92 Q237 93 236 104 Z" fill="var(--hair-b)"/>
+            <path d="M222 151 q6 6 12 0 M246 151 q6 6 12 0" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="216" cy="163" rx="7" ry="4" fill="var(--blush)" opacity="0.75"/>
+            <ellipse cx="260" cy="163" rx="7" ry="4" fill="var(--blush)" opacity="0.75"/>
+            <path d="M233 165 q5 5 10 0" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- brazos que se abrazan -->
+          <path d="M190 228 Q232 254 270 246" fill="none" stroke="var(--dress)" stroke-width="15" stroke-linecap="round"/>
+          <circle cx="272" cy="246" r="8" fill="var(--skin-g)"/>
+          <path d="M210 226 Q168 256 130 248" fill="none" stroke="var(--sweater)" stroke-width="15" stroke-linecap="round"/>
+          <circle cx="128" cy="248" r="8" fill="var(--skin-b)"/>
+        </g>
+      </g>
+    </svg>
+  </figure>
+
+  <section class="message">
+    <p class="phrase">Quisiera que este abrazo durara toda la vida.</p>
+    <p class="to">Para Noni ✨🤍</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  var box = document.getElementById("stars");
+  var seed = 7;
+  function rnd() {
+    seed = (seed * 16807) % 2147483647;
+    return (seed - 1) / 2147483646;
+  }
+  for (var i = 0; i < 90; i++) {
+    var s = document.createElement("span");
+    s.className = "star";
+    var size = rnd() < 0.15 ? 3 : (rnd() < 0.5 ? 2 : 1.5);
+    s.style.width = size + "px";
+    s.style.height = size + "px";
+    s.style.left = (rnd() * 100).toFixed(2) + "%";
+    s.style.top = (rnd() * 100).toFixed(2) + "%";
+    s.style.setProperty("--dur", (2.4 + rnd() * 3.4).toFixed(2) + "s");
+    s.style.setProperty("--delay", (-rnd() * 5).toFixed(2) + "s");
+    box.appendChild(s);
+  }
+})();
+</script>
